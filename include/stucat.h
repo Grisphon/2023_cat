@@ -6,5 +6,4 @@
 #include <unistd.h>
 
 int printer(char *arg);
-int stu_strlen(const char *str);
 #endif
