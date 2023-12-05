@@ -11,11 +11,15 @@ int printer(char *file_name)
     else
         fd = open(file_name, O_RDONLY);
     buffer = malloc(sizeof (char) * 10);
+    if (checker(fd, buffer) == 1)
+        return 1;
     size_read = read(fd, buffer, 10);
     while (size_read != 0) {
+        if (size_read == -1)
+            return 1;
         write(1, buffer, size_read);
         size_read = read(fd, buffer, 10);
     }
     free(buffer);
-    return 1;
+    return 0;
 }
