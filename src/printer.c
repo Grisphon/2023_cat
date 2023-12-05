@@ -7,7 +7,7 @@ int printer(char *file_name)
     int fd;
 
     if (file_name[0] == '-' && file_name[1] == '\0')
-        fd = 1;
+        fd = 0;
     else
         fd = open(file_name, O_RDONLY);
     buffer = malloc(sizeof (char) * 10);
