@@ -8,3 +8,4 @@ int checker(int fd, char *buffer)
         return 1;
     return 0;
 }
+

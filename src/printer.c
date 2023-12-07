@@ -1,14 +1,17 @@
 #include "stucat.h"
 
-int printer(char *file_name)
+int printer(char *file_name, int opt)
 {
     char *buffer;
     int size_read;
     int fd;
 
-    if (file_name[0] == '-' && file_name[1] == '\0')
+    if (opt == 1)
         fd = 0;
-    else
+    fd = 0;
+    if (file_name[0] == '-' && file_name[1] != '\0')
+        return 0;
+    else if (file_name[0] != '-')
         fd = open(file_name, O_RDONLY);
     buffer = malloc(sizeof (char) * 10);
     if (checker(fd, buffer) == 1)

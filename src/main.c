@@ -5,16 +5,18 @@ int main(int ac, char **av)
     int count;
     int error;
     int had_err;
+    int opt;
 
+    opt = option(ac, av);
     had_err = 0;
     error = 0;
     count = 1;
     if (ac == 1)
-        printer("-\0");
-    if (option(ac, av) == 1)
+        printer("-\0", opt);
+    if (opt == 1)
         return 0;
     while (count < ac) {
-        error = printer(av[count]);
+        error = printer(av[count], opt);
         if (error == 1)
             print_err(av[0], av[count]);
         count = count + 1;
