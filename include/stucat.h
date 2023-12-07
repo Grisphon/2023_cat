@@ -9,4 +9,7 @@ int checker(int fd, char *buffer);
 int printer(char *arg);
 int stu_strlen(const char *str);
 void print_err(char *prog_name, char *file_name);
+int option(int argc, char **argv);
+int has_opt (char *av, char opt);
+int helper();
 #endif
