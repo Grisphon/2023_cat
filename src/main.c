@@ -11,6 +11,8 @@ int main(int ac, char **av)
     count = 1;
     if (ac == 1)
         printer("-\0");
+    if (option(ac, av) == 1)
+        return 0;
     while (count < ac) {
         error = printer(av[count]);
         if (error == 1)
