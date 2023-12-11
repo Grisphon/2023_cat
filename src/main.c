@@ -1,5 +1,17 @@
 #include "stucat.h"
 
+int only_opt(int ac, char **av)
+{
+    int count;
+
+    count = 0;
+    while (count < ac) {
+        if (av[count][0] != '-')
+            return 1;
+    }
+    return 0;
+}
+
 int main(int ac, char **av)
 {
     int count;
@@ -11,7 +23,7 @@ int main(int ac, char **av)
     had_err = 0;
     error = 0;
     count = 1;
-    if (ac == 1)
+    if (ac == 1 || only_opt(ac, av))
         printer("-\0", opt);
     if (opt == 1)
         return 0;
@@ -25,3 +37,4 @@ int main(int ac, char **av)
     }
     return had_err;
 }
+
