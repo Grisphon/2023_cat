@@ -14,4 +14,7 @@ int has_opt (char *av, char opt);
 int helper();
 char *reader(char *av);
 int hasopt(const char *str, char subject);
+int option_e(char *ptr, char *buffer, int size_read);
+int option_t(char *ptr, char *buffer, int size_read);
+int option_et(char *ptr, char *buffer, int size_read);
 #endif
