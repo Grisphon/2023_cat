@@ -7,8 +7,6 @@ int printer(char *file_name, int opt)
     int size_read;
     int fd;
 
-    if (opt == 1)
-        fd = 0;
     fd = 0;
     if (file_name[0] == '-' && file_name[1] != '\0')
         return 0;
@@ -22,15 +20,10 @@ int printer(char *file_name, int opt)
         if (size_read == -1)
             return 1;
         ptr = buffer;
-        while (ptr < buffer + size_read) {
-            if (*ptr == '\n') {
-                write(1, "$", 1);
-                write(1, ptr, 1);
-            } else {
-                write(1, ptr, 1);
-            }
-            ptr = ptr + 1;
-        }
+        if (opt%100 > 9)
+            option_e(ptr, buffer, size_read);
+        else
+            write(1, buffer, size_read);
         size_read = read(fd, buffer, 10);
     }
     free(buffer);
