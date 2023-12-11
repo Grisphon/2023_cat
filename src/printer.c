@@ -22,6 +22,17 @@ int printer(char *file_name, int opt)
         ptr = buffer;
         if (opt%100 > 9)
             option_e(ptr, buffer, size_read);
+        else if (opt > 99) {
+            while (ptr < buffer + size_read) {
+                if (*ptr == '\t') {
+                    write(1, "^I", 2);
+                    ptr = ptr + 1;
+                } else {
+                    write(1, ptr, 1);
+                    ptr = ptr + 1;
+                }
+            }
+        }
         else
             write(1, buffer, size_read);
         size_read = read(fd, buffer, 10);
