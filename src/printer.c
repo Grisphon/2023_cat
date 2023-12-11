@@ -1,9 +1,30 @@
 #include "stucat.h"
 
+int chooser(int size_read, char *buffer, int fd, int opt)
+{
+    char *ptr;
+
+    while (size_read != 0) {
+        if (size_read == -1)
+            return 1;
+        ptr = buffer;
+        if (opt%100 > 9 && opt > 99)
+            option_et(ptr, buffer, size_read);
+        else if (opt%100 > 9)
+            option_e(ptr, buffer, size_read);
+        else if (opt > 99) {
+            option_t(ptr, buffer, size_read);
+        }
+        else
+            write(1, buffer, size_read);
+        size_read = read(fd, buffer, 10);
+    }
+    return 0;
+}
+
 int printer(char *file_name, int opt)
 {
     char *buffer;
-    char *ptr;
     int size_read;
     int fd;
 
@@ -16,27 +37,8 @@ int printer(char *file_name, int opt)
     if (checker(fd, buffer) == 1)
         return 1;
     size_read = read(fd, buffer, 10);
-    while (size_read != 0) {
-        if (size_read == -1)
-            return 1;
-        ptr = buffer;
-        if (opt%100 > 9)
-            option_e(ptr, buffer, size_read);
-        else if (opt > 99) {
-            while (ptr < buffer + size_read) {
-                if (*ptr == '\t') {
-                    write(1, "^I", 2);
-                    ptr = ptr + 1;
-                } else {
-                    write(1, ptr, 1);
-                    ptr = ptr + 1;
-                }
-            }
-        }
-        else
-            write(1, buffer, size_read);
-        size_read = read(fd, buffer, 10);
-    }
+    if (chooser(size_read, buffer, fd, opt) == 1)
+        return 1;
     free(buffer);
     return 0;
 }
