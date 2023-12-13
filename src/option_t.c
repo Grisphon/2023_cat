@@ -1,4 +1,5 @@
 #include "stucat.h"
+#include <unistd.h>
 
 int option_t(char *ptr, char *buffer, int size_read)
 {

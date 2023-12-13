@@ -1,10 +1,6 @@
 #ifndef STUCAT_H_
 #define STUCAT_H_
 
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 int checker(int fd, char *buffer);
 int printer(char *arg, int opt);
 int stu_strlen(const char *str);

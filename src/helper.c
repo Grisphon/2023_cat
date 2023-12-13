@@ -1,4 +1,5 @@
 #include "stucat.h"
+#include <unistd.h>
 
 int helper()
 {

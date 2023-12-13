@@ -1,4 +1,7 @@
 #include "stucat.h"
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 char *strdupcat(char *str1, char *str2)
 {

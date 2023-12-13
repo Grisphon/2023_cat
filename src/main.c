@@ -1,4 +1,7 @@
 #include "stucat.h"
+#include <fcntl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int only_opt(int ac, char **av)
 {
