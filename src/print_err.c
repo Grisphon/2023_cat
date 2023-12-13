@@ -1,6 +1,7 @@
 #include "stucat.h"
 #include "errno.h"
 #include "string.h"
+#include <unistd.h>
 
 void print_err(char *prog_name, char *file_name)
 {

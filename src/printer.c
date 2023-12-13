@@ -1,4 +1,6 @@
 #include "stucat.h"
+#include <fcntl.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 int chooser(int size_read, char *buffer, int fd, int opt)
