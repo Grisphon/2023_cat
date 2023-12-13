@@ -9,8 +9,9 @@ int only_opt(int ac, char **av)
 
     count = 0;
     while (count < ac) {
-        if (av[count][0] != '-')
+        if (av[count][0] == '-')
             return 1;
+        count = count + 1;
     }
     return 0;
 }
@@ -40,4 +41,3 @@ int main(int ac, char **av)
     }
     return had_err;
 }
-
